@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Jayphix Consult</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cabinet Grotesk', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* Registration Card Container */
+        .registration-card {
+            background-color: #111111;
+            border: 1px solid #1a1a1a;
+            padding: 45px 40px;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Branding Signifier */
+        .brand-title {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        
+        .brand-title span {
+            color: #f46b09; /* Elegant gold accent dot */
+        }
+
+        /* Input Layouts */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            color: #888888;
+            font-weight: 600;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            background-color: #161616;
+            border: 1px solid #252525;
+            border-radius: 2px;
+            color: #ffffff;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* Specific fix for HTML5 date picker color scheme in dark mode */
+        input[type="date"] {
+            color-scheme: dark;
+        }
+
+        /* Focus Ring matching your premium aesthetic */
+        .form-group input:focus, 
+        .form-group select:focus {
+            outline: none;
+            border-color: #f46b09;
+            background-color: #1a1a1a;
+        }
+
+        /* Action Button matching your "Book a Call" style */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: transparent;
+            border: 1px solid #f46b09;
+            color: #f46b09;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .submit-btn:hover {
+            background-color: #f46b09;
+            color: #0a0a0a;
+        }
+
+        /* Footer Redirection */
+        .form-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #555555;
+        }
+
+        .form-footer a {
+            color: #f46b09;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="registration-card">
+        <div class="brand-title">Jayphix Consult<span>.</span></div>
+        
+        <form id="registrationForm" action="#" method="POST">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required placeholder="Alex Morgan">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="alex@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected hidden>Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="non-binary">Non-binary</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="••••••••">
+            </div>
+
+            <button type="submit" class="submit-btn">Create Account</button>
+        </form>
+
+        <div class="form-footer">
+            Already registered? <a href="index.html">Return to Home</a>
+        </div>
+    </div>
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Stops the page from just reloading
+
+        // Get the values from the input fields
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Save them locally into the browser memory
+        localStorage.setItem('registeredName', fullName);
+        localStorage.setItem('registeredEmail', email);
+        localStorage.setItem('registeredPassword', password);
+
+        alert('Account created successfully! Redirecting to login page...');
+        
+        // Change this to 'loginpage.html' if that is your exact filename!
+        window.location.href = 'loginpage.html'; 
+    });
+</script>
+</body>
+</html>

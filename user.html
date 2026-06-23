@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Lounge | Jayphix</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cabinet Grotesk', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 5%;
+            border-bottom: 1px solid #1a1a1a;
+            background-color: #0a0a0a;
+        }
+
+        .brand-logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .brand-logo span {
+            color: #f46b09;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 1px solid #f46b09;
+            color: #f46b09;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .logout-btn:hover {
+            background-color: #f46b09;
+            color: #0a0a0a;
+        }
+
+        /* Main Dashboard Layout */
+        main {
+            flex: 1;
+            padding: 40px 5%;
+            max-width: 1080px;
+            max-height: 1350px;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .welcome-header {
+            margin-bottom: 40px;
+        }
+
+        .welcome-header h1 {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .welcome-header h1 span {
+            color: #f46b09;
+        }
+
+        .welcome-header p {
+            color: #666666;
+            font-size: 15px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Card Component */
+        .card {
+            background-color: #f46b09;
+            border: 1px solid #1a1a1a;
+            padding: 30px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .card h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #f46b09;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 10px;
+        }
+
+        /* Interactive Project Gallery */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        .gallery-item {
+            background-color: #161616;
+            border: 1px solid #f46b09;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Image Wrapper & Live Badge */
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background-color: #f46b09;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.04);
+            filter: brightness(1.1);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        /* Dynamic Status Colors */
+        .status-review {
+            background-color: rgba(233, 97, 7, 0.786);
+            color: #f46b09;
+        }
+
+        .status-approved {
+            background-color: rgba(40, 167, 69, 0.85);
+            color: #fff;
+        }
+
+        .status-revising {
+            background-color: rgba(220, 53, 69, 0.85);
+            color: #fff;
+        }
+
+        /* Item Details & Actions */
+        .item-details {
+            padding: 20px;
+            border-top: 1px solid #222;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-details h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .item-details p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Action Panel Buttons */
+        .action-panel {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn-approve, .btn-revise {
+            flex: 1;
+            padding: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .btn-approve {
+            background-color: transparent;
+            border: 1px solid #073ee1;
+            color: #073ee1;
+        }
+
+        .btn-approve:hover {
+            background-color: #13af38e5;
+            color: #fff;
+        }
+
+        .btn-revise {
+            background-color: transparent;
+            border: 1px solid #555;
+            color: #aaa;
+        }
+
+        .btn-revise:hover {
+            border-color: #f46b09;
+            color: #f46b09;
+        }
+
+        /* Success Message that replaces buttons */
+        .success-message {
+            display: none;
+            text-align: center;
+            font-size: 13px;
+            color: #13af38e5;
+            font-weight: 600;
+            padding: 10px;
+            background-color: rgba(40, 167, 69, 0.1);
+            border-radius: 2px;
+        }
+
+        /* Profile details */
+        .profile-detail {
+            margin-bottom: 15px;
+        }
+
+        .profile-detail span {
+            display: block;
+            font-size: 12px;
+            color: #555555;
+            margin-bottom: 2px;
+        }
+
+        .profile-detail p {
+            font-size: 15px;
+            color: #ffffff;
+        }
+
+        /* Lightbox */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 5, 5, 0.95);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85%;
+            object-fit: contain;
+            border: 1px solid #222;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            color: #888;
+            font-size: 35px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #f46b09;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="brand-logo">Jayphix<span>.</span></a>
+        <a href="loginpage.html" class="logout-btn" id="logoutLink">Sign Out</a>
+    </nav>
+
+    <main>
+        <div class="welcome-header">
+            <h1 id="welcomeMessage">Welcome back, <span>Client</span></h1>
+            <p>Review your active creative deliverables. Click images to view in full presentation mode.</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="left-column">
+                <div class="card">
+                    <h2 style="color: #000000;">Pending Approvals</h2>
+                    
+                    <div class="project-gallery">
+                        <div class="gallery-item" id="project-1">
+                            <div class="image-container">
+                                <div class="status-badge status-review" id="badge-1">For Review</div>
+                                <img src="BEACH-FLYER-DESIGN.png" class="lightbox-trigger" alt="Grand Bassam Flyer">
+                            </div>
+                            <div class="item-details">
+                                <h4>Grand Bassam Beach Flyer</h4>
+                                <p>Version 1.2 • High Resolution</p>
+                                
+                                <div class="action-panel" id="actions-1">
+                                    <button class="btn-approve" onclick="approveDesign(1)">Approve</button>
+                                    <button class="btn-revise" onclick="requestRevision(1)">Revise</button>
+                                </div>
+                                <div class="success-message" id="success-1">
+                                    ✓ Design Approved for Final Delivery
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="card">
+                    <h2 style="color: #000000;">Profile Overview</h2>
+                    
+                    <div class="profile-detail">
+                        <span>Account Tier</span>
+                        <p>Premium Client</p>
+                    </div>
+
+                    <div class="profile-detail">
+                        <span>Registered Email</span>
+                        <p id="userEmail">client@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="lightbox" class="lightbox-modal">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightboxTarget">
+    </div>
+
+   <script>
+    // 1. THE GATEKEEPER GUARD (Must run first!)
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+    if (isLoggedIn !== 'true') {
+        // Immediately stop them and redirect to login page
+        alert("Access Denied. You must log in to access this private client lounge.");
+        window.location.href = 'loginpage.html'; 
+    }
+
+    // 2. Personalization Logic (Runs only if they pass the guard)
+    const userName = localStorage.getItem('registeredName');
+    const userEmail = localStorage.getItem('registeredEmail');
+
+    if (userName) {
+        document.getElementById('welcomeMessage').innerHTML = `Welcome back, <span>${userName}</span>`;
+    }
+    if (userEmail) {
+        document.getElementById('userEmail').textContent = userEmail;
+    }
+
+    // 3. Interactive Feedback Logic (Approve / Revise)
+    function approveDesign(projectId) {
+        const badge = document.getElementById(`badge-${projectId}`);
+        badge.textContent = 'Approved';
+        badge.className = 'status-badge status-approved';
+        document.getElementById(`actions-${projectId}`).style.display = 'none';
+        document.getElementById(`success-${projectId}`).style.display = 'block';
+        localStorage.setItem(`project_${projectId}_status`, 'approved');
+    }
+
+    function requestRevision(projectId) {
+        const feedback = prompt("What changes would you like to see in the next version?");
+        if (feedback !== null && feedback.trim() !== "") {
+            const badge = document.getElementById(`badge-${projectId}`);
+            badge.textContent = 'Revising';
+            badge.className = 'status-badge status-revising';
+            alert("Revision request submitted!");
+        }
+    }
+
+    if (localStorage.getItem('project_1_status') === 'approved') {
+        approveDesign(1);
+    }
+
+    // 4. Lightbox Logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxTarget = document.getElementById('lightboxTarget');
+    const closeBtn = document.querySelector('.close-btn');
+
+    document.querySelectorAll('.lightbox-trigger').forEach(image => {
+        image.addEventListener('click', () => {
+            lightbox.style.display = 'flex';
+            lightboxTarget.src = image.src;
+        });
+    });
+
+    closeBtn.addEventListener('click', () => { lightbox.style.display = 'none'; });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.style.display = 'none'; });
+
+    // 5. Secure Sign Out Logic
+    document.getElementById('logoutLink').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Destroy the login session key so they can't sneak back in using the back button
+        localStorage.removeItem('isLoggedIn');
+        alert("Signing out securely...");
+        window.location.href = 'loginpage.html';
+    });
+</script>
+
+</body>
+</html>

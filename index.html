@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jayphix.Consults | Elite Digital Agency</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-[#050d1f] text-white overflow-x-hidden">
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-outline"></div>
+
+  <!-- Noise Texture Overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- Loader -->
+  <div id="loader" class="fixed inset-0 bg-[#050d1f] z-[999] flex flex-col items-center justify-center gap-4">
+    <div class="text-3xl font-serif font-bold tracking-widest text-amber-500 loader-logo">JAYPHIX</div>
+    <div class="flex gap-3 mt-4">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+  </div>
+
+  <!-- Main Site -->
+  <div id="mainSite">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 px-6 md:px-12 py-6 flex items-center justify-between mix-blend-difference">
+      <a href="#" class="text-2xl font-serif font-bold tracking-tight text-white">Jayphix<span class="text-amber-500">.Consults</span></a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#about" class="nav-link text-xs font-semibold uppercase tracking-widest text-white hover:text-amber-400 transition">About</a>
+        <a href="#services" class="nav-link text-xs font-semibold uppercase tracking-widest text-white hover:text-amber-400 transition">Services</a>
+        <a href="#work" class="nav-link text-xs font-semibold uppercase tracking-widest text-white hover:text-amber-400 transition">Work</a>
+        <a href="#contact" class="nav-link text-xs font-semibold uppercase tracking-widest text-white hover:text-amber-400 transition">Contact</a>
+        <button onclick="openAdmin()" class="text-xs font-semibold uppercase tracking-widest text-slate-400 hover:text-amber-400 transition flex items-center gap-2">
+          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Admin
+        </button>
+      </div>
+      <button class="md:hidden text-white" onclick="toggleMobileMenu()"><i data-lucide="menu" class="w-6 h-6"></i></button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-[#050d1f]/95 backdrop-blur-xl z-40 hidden flex-col items-center justify-center gap-8">
+      <button class="absolute top-6 right-6 text-white" onclick="toggleMobileMenu()"><i data-lucide="x" class="w-8 h-8"></i></button>
+      <a href="#about" onclick="toggleMobileMenu()" class="text-3xl font-serif text-white hover:text-amber-400 transition">About</a>
+      <a href="#services" onclick="toggleMobileMenu()" class="text-3xl font-serif text-white hover:text-amber-400 transition">Services</a>
+      <a href="#work" onclick="toggleMobileMenu()" class="text-3xl font-serif text-white hover:text-amber-400 transition">Work</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="text-3xl font-serif text-white hover:text-amber-400 transition">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+      <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-blue-800/20 rounded-full filter blur-[120px] animate-pulse-slow"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-amber-500/10 rounded-full filter blur-[100px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+      
+      <div class="relative z-10 text-center max-w-6xl mx-auto px-6">
+        <div class="reveal">
+          <p class="text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-amber-500 mb-8 flex items-center justify-center gap-3">
+            <span class="w-8 h-px bg-amber-500"></span> Digital Creative <span class="w-8 h-px bg-amber-500"></span>
+          </p>
+        </div>
+        <h1 class="text-5xl md:text-8xl lg:text-9xl font-serif font-bold leading-[0.9] tracking-tighter mb-8 reveal" style="animation-delay: 0.2s">
+          <span id="typewriterText"></span><span class="typewriter-cursor">|</span>
+        </h1>
+        <div class="reveal" style="animation-delay: 0.4s">
+          <p class="text-slate-400 text-base md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+            We partner with ambitious brands to create premium digital experiences that drive measurable impact.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-5 justify-center reveal" style="animation-delay: 0.6s">
+          <a href="#work" class="group bg-amber-500 text-blue-950 font-bold px-8 py-4 rounded-full text-sm flex items-center justify-center gap-2 hover:bg-amber-400 transition duration-300">
+            View Our Work <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+          <a href="#contact" class="border border-amber-500/30 text-amber-500 font-semibold px-8 py-4 rounded-full text-sm flex items-center justify-center gap-2 hover:bg-amber-500/10 transition duration-300">
+            Book a Call
+          </a>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 animate-bounce">
+        <span class="text-[10px] uppercase tracking-widest">Scroll</span>
+        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+      </div>
+    </section>
+
+    <!-- About Section (Bento Grid) -->
+    <section id="about" class="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-5 gap-6">
+        <div class="md:col-span-3 bg-gradient-to-br from-blue-950 to-blue-900 border border-white/5 rounded-3xl p-10 relative overflow-hidden group reveal">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full filter blur-3xl group-hover:bg-amber-500/10 transition duration-700"></div>
+          <p class="text-xs font-bold tracking-[0.3em] uppercase text-amber-500 mb-6">About Us</p>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold leading-tight mb-6">Building Digital <br/><em class="text-amber-400 font-light">Excellence</em></h2>
+          <p class="text-slate-400 text-sm leading-relaxed font-light max-w-lg">
+            Jayphix.Consults is a premium web development and digital consulting firm. We bring a meticulous approach to every project — combining cutting-edge technology with refined design sensibility.
+          </p>
+        </div>
+        <div class="md:col-span-2 grid grid-rows-3 gap-6">
+          <div class="glass-card rounded-3xl p-8 flex flex-col justify-center reveal" style="animation-delay:0.1s">
+            <div class="text-5xl font-serif font-bold text-white mb-1">50+</div>
+            <div class="text-xs text-slate-500 uppercase tracking-widest">Projects Delivered</div>
+          </div>
+          <div class="glass-card rounded-3xl p-8 flex flex-col justify-center reveal" style="animation-delay:0.2s">
+            <div class="text-5xl font-serif font-bold text-amber-500 mb-1">100%</div>
+            <div class="text-xs text-slate-500 uppercase tracking-widest">Client Satisfaction</div>
+          </div>
+          <div class="glass-card rounded-3xl p-8 flex flex-col justify-center reveal" style="animation-delay:0.3s">
+            <div class="text-5xl font-serif font-bold text-white mb-1">3+</div>
+            <div class="text-xs text-slate-500 uppercase tracking-widest">Years of Impact</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="text-center mb-20 reveal">
+        <p class="text-xs font-bold tracking-[0.3em] uppercase text-amber-500 mb-4 flex items-center justify-center gap-3">
+          <span class="w-8 h-px bg-amber-500"></span> Capabilities <span class="w-8 h-px bg-amber-500"></span>
+        </p>
+        <h2 class="text-4xl md:text-6xl font-serif font-bold">Our <em class="text-amber-400 font-light">Services</em></h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="service-card glass-card rounded-3xl p-8 group reveal">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-8 group-hover:bg-amber-500 transition duration-300">
+            <i data-lucide="globe" class="w-6 h-6 text-amber-500 group-hover:text-blue-950 transition"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Web Development</h3>
+          <p class="text-slate-400 text-sm leading-relaxed font-light">Custom websites built with modern technologies. Responsive, fast, and optimized for conversion.</p>
+        </div>
+        <div class="service-card glass-card rounded-3xl p-8 group reveal" style="animation-delay:0.1s">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-8 group-hover:bg-amber-500 transition duration-300">
+            <i data-lucide="palette" class="w-6 h-6 text-amber-500 group-hover:text-blue-950 transition"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
+          <p class="text-slate-400 text-sm leading-relaxed font-light">Beautiful, intuitive interfaces designed with your users in mind. Every pixel has a purpose.</p>
+        </div>
+        <div class="service-card glass-card rounded-3xl p-8 group reveal" style="animation-delay:0.2s">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-8 group-hover:bg-amber-500 transition duration-300">
+            <i data-lucide="smartphone" class="w-6 h-6 text-amber-500 group-hover:text-blue-950 transition"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Mobile Apps</h3>
+          <p class="text-slate-400 text-sm leading-relaxed font-light">Native and cross-platform mobile applications that deliver seamless experiences on any device.</p>
+        </div>
+        <div class="service-card glass-card rounded-3xl p-8 group reveal" style="animation-delay:0.3s">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-8 group-hover:bg-amber-500 transition duration-300">
+            <i data-lucide="search" class="w-6 h-6 text-amber-500 group-hover:text-blue-950 transition"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">SEO Optimization</h3>
+          <p class="text-slate-400 text-sm leading-relaxed font-light">Data-driven SEO strategies to boost your visibility and drive organic traffic to your site.</p>
+        </div>
+        <div class="service-card glass-card rounded-3xl p-8 group reveal" style="animation-delay:0.4s">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-8 group-hover:bg-amber-500 transition duration-300">
+            <i data-lucide="trending-up" class="w-6 h-6 text-amber-500 group-hover:text-blue-950 transition"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Digital Strategy</h3>
+          <p class="text-slate-400 text-sm leading-relaxed font-light">Strategic consulting to align your digital presence with your business goals and growth targets.</p>
+        </div>
+        <div class="service-card glass-card rounded-3xl p-8 group reveal" style="animation-delay:0.5s">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-8 group-hover:bg-amber-500 transition duration-300">
+            <i data-lucide="server" class="w-6 h-6 text-amber-500 group-hover:text-blue-950 transition"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Hosting & Maintenance</h3>
+          <p class="text-slate-400 text-sm leading-relaxed font-light">Reliable hosting and ongoing maintenance so your site stays secure, fast, and up-to-date.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work/Projects Section -->
+    <section id="work" class="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="text-center mb-20 reveal">
+        <p class="text-xs font-bold tracking-[0.3em] uppercase text-amber-500 mb-4 flex items-center justify-center gap-3">
+          <span class="w-8 h-px bg-amber-500"></span> Portfolio <span class="w-8 h-px bg-amber-500"></span>
+        </p>
+        <h2 class="text-4xl md:text-6xl font-serif font-bold">Featured <em class="text-amber-400 font-light">Projects</em></h2>
+      </div>
+      <div id="publicProjects" class="grid md:grid-cols-2 gap-6"></div>
+      <div id="noProjectsMsg" class="text-center py-24 glass-card rounded-3xl reveal">
+        <i data-lucide="folder-open" class="w-12 h-12 text-blue-800 mx-auto mb-4"></i>
+        <p class="text-slate-500 text-sm">No projects published yet. Check back soon!</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <p class="text-xs font-bold tracking-[0.3em] uppercase text-amber-500 mb-4 flex items-center gap-3">
+            <span class="w-8 h-px bg-amber-500"></span> Get In Touch
+          </p>
+          <h2 class="text-4xl md:text-6xl font-serif font-bold mb-6">Let's <em class="text-amber-400 font-light">Talk</em></h2>
+          <p class="text-slate-400 text-base leading-relaxed font-light mb-10 max-w-md">Ready to start your project? Book a call with us and let's discuss how we can bring your vision to life.</p>
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 glass-card rounded-xl flex items-center justify-center">
+                <i data-lucide="mail" class="w-5 h-5 text-amber-500"></i>
+              </div>
+              <span class="text-sm text-slate-300 font-light">hello@jayphix.consults</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 glass-card rounded-xl flex items-center justify-center">
+                <i data-lucide="phone" class="w-5 h-5 text-amber-500"></i>
+              </div>
+              <span class="text-sm text-slate-300 font-light">+1 (555) 123-4567</span>
+            </div>
+          </div>
+        </div>
+        <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4 reveal" style="animation-delay:0.2s">
+          <input type="text" placeholder="Your Name" required class="w-full bg-blue-950/50 border border-white/5 rounded-xl px-5 py-4 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500/50 transition" />
+          <input type="email" placeholder="Your Email" required class="w-full bg-blue-950/50 border border-white/5 rounded-xl px-5 py-4 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500/50 transition" />
+          <textarea placeholder="Tell us about your project..." rows="4" required class="w-full bg-blue-950/50 border border-white/5 rounded-xl px-5 py-4 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500/50 transition resize-none"></textarea>
+          <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-blue-950 font-bold py-4 rounded-xl transition text-sm flex items-center justify-center gap-2">
+            Send Message <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-xl font-serif font-bold text-white">Jayphix<span class="text-amber-500">.</span></div>
+        <p class="text-slate-600 text-xs">&copy; 2025 Jayphix.Consults. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ============ ADMIN PANEL ============ -->
+  <div id="adminPanel" class="hidden">
+    <aside id="adminSidebar" class="admin-sidebar">
+      <div class="p-6 border-b border-white/5">
+        <div class="text-lg font-serif font-semibold text-amber-500">Jayphix<span class="text-white">.Admin</span></div>
+      </div>
+      <nav class="py-4">
+        <div class="sidebar-link active" onclick="switchAdminTab('dashboard', this)"><i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard</div>
+        <div class="sidebar-link" onclick="switchAdminTab('projects', this)"><i data-lucide="folder-kanban" class="w-5 h-5"></i> Projects</div>
+        <div class="sidebar-link" onclick="switchAdminTab('gallery', this)"><i data-lucide="image" class="w-5 h-5"></i> Gallery</div>
+        <div class="sidebar-link" onclick="switchAdminTab('messages', this)"><i data-lucide="message-square" class="w-5 h-5"></i> Messages</div>
+        <div class="mt-8 border-t border-white/5 pt-4">
+          <div class="sidebar-link" onclick="closeAdmin()"><i data-lucide="arrow-left" class="w-5 h-5"></i> Back to Site</div>
+        </div>
+      </nav>
+    </aside>
+
+    <main id="adminMain" class="admin-main bg-[#050d1f] min-h-screen">
+      <div class="sticky top-0 z-40 bg-[#050d1f]/80 backdrop-blur-md border-b border-white/5 px-8 py-4 flex items-center justify-between">
+        <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white transition"><i data-lucide="menu" class="w-6 h-6"></i></button>
+        <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-xs font-bold text-blue-950">JP</div>
+      </div>
+
+      <div id="tab-dashboard" class="admin-tab p-8">
+        <h2 class="text-2xl font-serif mb-8">Dashboard</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="glass-card rounded-2xl p-6"><div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Projects</div><div id="statProjects" class="text-3xl font-serif text-white">0</div></div>
+          <div class="glass-card rounded-2xl p-6"><div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Gallery</div><div id="statGallery" class="text-3xl font-serif text-white">0</div></div>
+          <div class="glass-card rounded-2xl p-6"><div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Messages</div><div id="statMessages" class="text-3xl font-serif text-white">0</div></div>
+          <div class="glass-card rounded-2xl p-6"><div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Published</div><div id="statPublished" class="text-3xl font-serif text-amber-500">0</div></div>
+        </div>
+      </div>
+
+      <div id="tab-projects" class="admin-tab p-8 hidden">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-serif">Projects</h2>
+          <button onclick="openProjectModal()" class="bg-amber-500 hover:bg-amber-400 text-blue-950 text-sm font-bold px-5 py-2.5 rounded-lg transition flex items-center gap-2">
+            <i data-lucide="plus" class="w-4 h-4"></i> New Project
+          </button>
+        </div>
+        <div id="adminProjectList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div id="noAdminProjects" class="text-center py-20 glass-card rounded-2xl">
+          <p class="text-slate-500 text-sm mb-4">No projects yet.</p>
+          <button onclick="openProjectModal()" class="text-amber-500 text-sm font-semibold">Create First Project</button>
+        </div>
+      </div>
+
+      <div id="tab-gallery" class="admin-tab p-8 hidden">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-serif">Gallery</h2>
+          <button onclick="openGalleryModal()" class="bg-amber-500 hover:bg-amber-400 text-blue-950 text-sm font-bold px-5 py-2.5 rounded-lg transition flex items-center gap-2">
+            <i data-lucide="upload" class="w-4 h-4"></i> Upload
+          </button>
+        </div>
+        <div id="adminGalleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+        <div id="noAdminGallery" class="text-center py-20 glass-card rounded-2xl">
+          <p class="text-slate-500 text-sm mb-4">No images yet.</p>
+          <button onclick="openGalleryModal()" class="text-amber-500 text-sm font-semibold">Upload Image</button>
+        </div>
+      </div>
+
+      <div id="tab-messages" class="admin-tab p-8 hidden">
+        <h2 class="text-2xl font-serif mb-8">Messages</h2>
+        <div id="adminMessagesList" class="space-y-4"></div>
+        <div id="noAdminMessages" class="text-center py-20 glass-card rounded-2xl">
+          <p class="text-slate-500 text-sm">No messages yet.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============ MODALS ============ -->
+  <div id="projectModal" class="modal-overlay" onclick="if(event.target===this)closeProjectModal()">
+    <div class="modal-box">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-serif" id="projectModalTitle">New Project</h3>
+        <button onclick="closeProjectModal()" class="text-slate-400 hover:text-white transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form id="projectForm" onsubmit="handleProjectSubmit(event)" class="space-y-4">
+        <input type="hidden" id="projectEditId" value="" />
+        <input type="text" id="projectTitle" required placeholder="Project Title" class="w-full bg-blue-950/50 border border-white/5 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500/50 transition" />
+        <select id="projectCategory" class="w-full bg-blue-950/50 border border-white/5 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500/50 transition">
+          <option value="Web Development">Web Development</option>
+          <option value="UI/UX Design">UI/UX Design</option>
+          <option value="Mobile App">Mobile App</option>
+        </select>
+        <textarea id="projectDesc" rows="3" placeholder="Description" class="w-full bg-blue-950/50 border border-white/5 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500/50 transition resize-none"></textarea>
+        <input type="url" id="projectImage" placeholder="Image URL" class="w-full bg-blue-950/50 border border-white/5 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500/50 transition" />
+        <input type="url" id="projectUrl" placeholder="Project URL (optional)" class="w-full bg-blue-950/50 border border-white/5 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500/50 transition" />
+        <div class="flex items-center gap-3">
+          <input type="checkbox" id="projectPublished" class="rounded bg-blue-950 border-white/5 text-amber-500 focus:ring-amber-500" />
+          <label for="projectPublished" class="text-sm text-slate-300">Publish immediately</label>
+        </div>
+        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-blue-950 font-bold py-3 rounded-lg transition text-sm">Save Project</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="galleryModal" class="modal-overlay" onclick="if(event.target===this)closeGalleryModal()">
+    <div class="modal-box">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-serif">Upload Image</h3>
+        <button onclick="closeGalleryModal()" class="text-slate-400 hover:text-white transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form onsubmit="handleGallerySubmit(event)" class="space-y-4">
+        <input type="url" id="galleryImageUrl" required placeholder="Image URL" class="w-full bg-blue-950/50 border border-white/5 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500/50 transition" />
+        <input type="text" id="galleryTitle" required placeholder="Image Title" class="w-full bg-blue-950/50 border border-white/5 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500/50 transition" />
+        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-blue-950 font-bold py-3 rounded-lg transition text-sm">Upload</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
