@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jayphix Consults — More About Me Dashboard.">
+  <title>Jayphix Consults — More About Me</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fredoka:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles copy.css">
+</head>
+<body>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <header class="header-blur border-b bg-transparent">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
+      <a href="index copy.html" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-500 group-hover:rotate-6" style="background: var(--fg);">
+          <span class="font-bold text-lg" style="color: var(--bg)">J</span>
+        </div>
+        <span class="font-semibold tracking-tight text-[15px]">Jayphix<span style="color: var(--accent-bright)">Consults</span></span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-9">
+        <a href="index copy.html#work" class="nav-link">Work</a>
+        <a href="index copy.html#about" class="nav-link">About</a>
+        <a href="index copy.html#services" class="nav-link">Services</a>
+        <a href="index copy.html#testimonials" class="nav-link">Clients</a>
+        <a href="index copy.html#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+        <a href="index copy.html#contact" class="hidden md:inline-flex btn-primary px-5 py-2.5 rounded-full text-sm font-medium">
+          <span>Let's talk</span>
+        </a>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center" id="menuToggle" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="dashboard-page relative min-h-screen flex flex-col justify-center pt-28 pb-28 overflow-hidden noise">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full hero-content">
+      <div class="section-label mb-8">More about me</div>
+      <h1 class="display hero-headline font-semibold mb-10 max-w-4xl">
+        Everything you need to know about my work, tools, education, and profile.
+      </h1>
+      <div class="grid gap-8 grid-cols-1 lg:grid-cols-2 items-start">
+        <!-- Row 1: Education | Hobby -->
+        <div class="flex justify-center lg:justify-end">
+          <div class="dashboard-card p-8 rounded-[28px] bg-[var(--surface)] border border-[var(--border)] shadow-sm max-w-[520px]">
+            <div class="section-label mb-5"><b><i class="fa-solid fa-graduation-cap"></i> Education |2024-PRESENT|</b></div>
+            <ul class="dashboard-list">
+              <li><i class="fa-solid fa-circle"></i> Bachelor in information Technology : University of Abidjan.</li>
+              <p><i class="fa-solid fa-quote-left"></i> Pursuing a bachelor's degree in Information Technology at the University of Abidjan, where I am honing my 
+                skills in web development, software development and digital innovation.<i class="fa-solid fa-quote-right"></i></p>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex justify-center lg:justify-start">
+          <div class="dashboard-card p-8 rounded-[28px] bg-[var(--surface)] border border-[var(--border)] shadow-sm max-w-[520px]">
+            <div class="section-label mb-5"><i class="fa-solid fa-heart"></i> Hobby</div>
+            <ul class="dashboard-list">
+              <li><i class="fa-solid fa-circle"></i> Coding</li>
+              <li><i class="fa-solid fa-circle"></i> Playing the guitar and writing music</li>
+              <li><i class="fa-solid fa-circle"></i> Sports: Football, Table Tennis</li>
+              <li><i class="fa-solid fa-circle"></i> Researching, and creating innovative projects</li>
+              <li><i class="fa-solid fa-circle"></i> Discovering new technologies</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 2: Tools | Hobby -->
+        <div class="flex justify-center lg:justify-end">
+          <div class="dashboard-card tools p-8 rounded-[28px] bg-[var(--surface)] border border-[var(--border)] shadow-sm w-full max-w-[720px]">
+            <div class="section-label mb-5"><i class="fa-solid fa-tools"></i> Tools</div>
+            <div class="tools-grid grid grid-cols-2 gap-4">
+              <div class="tool-item flex items-center gap-4">
+                <span class="tool-icon w-11 h-11 rounded-2xl flex items-center justify-center bg-[var(--bg-alt)] text-[var(--accent)]">
+                  <i class="fa-brands fa-html5"></i>
+                </span>
+                <div>
+                  <div class="font-medium">HTML / CSS / JavaScript</div>
+                  <div class="text-xs" style="color: var(--muted)">Web development</div>
+                </div>
+              </div>
+
+              <div class="tool-item flex items-center gap-4">
+                <span class="tool-icon w-11 h-11 rounded-2xl flex items-center justify-center bg-[var(--bg-alt)] text-[var(--accent)]">
+                  <i class="fa-solid fa-wind"></i>
+                </span>
+                <div>
+                  <div class="font-medium">Tailwind CSS</div>
+                  <div class="text-xs" style="color: var(--muted)">Utility-first CSS</div>
+                </div>
+              </div>
+
+              <div class="tool-item flex items-center gap-4">
+                <span class="tool-icon w-11 h-11 rounded-2xl flex items-center justify-center bg-[var(--bg-alt)] text-[var(--accent)]">
+                  <i class="fa-brands fa-react"></i>
+                </span>
+                <div>
+                  <div class="font-medium">React / Next.js</div>
+                  <div class="text-xs" style="color: var(--muted)">Web development</div>
+                </div>
+              </div>
+
+              <div class="tool-item flex items-center gap-4">
+                <span class="tool-icon tool-icon-image tool-icon-illustrator w-11 h-11 rounded-2xl" aria-hidden="true">
+                  <img src="../images/illustrator.png" alt="Adobe Illustrator">
+                </span>
+                <div>
+                  <div class="font-medium">Adobe Illustrator</div>
+                  <div class="text-xs" style="color: var(--muted)">Graphic design + logo</div>
+                </div>
+              </div>
+
+              <div class="tool-item flex items-center gap-4">
+                <span class="tool-icon tool-icon-image tool-icon-photoshop w-11 h-11 rounded-2xl" aria-hidden="true">
+                  <img src="../images/photoshop.png" alt="Adobe Photoshop">
+                </span>
+                <div>
+                  <div class="font-medium">Adobe Photoshop</div>
+                  <div class="text-xs" style="color: var(--muted)">Graphic design + image editing</div>
+                </div>
+              </div>
+
+              <div class="tool-item flex items-center gap-4">
+                <span class="tool-icon w-11 h-11 rounded-2xl flex items-center justify-center bg-[var(--bg-alt)] text-[var(--accent)]">
+                  <i class="fa-brands fa-figma"></i>
+                </span>
+                <div>
+                  <div class="font-medium">Figma</div>
+                  <div class="text-xs" style="color: var(--muted)">Interface & prototyping</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center lg:justify-start">
+          <div class="dashboard-card p-8 rounded-[28px] bg-[var(--surface)] border border-[var(--border)] shadow-sm max-w-[520px]">
+            <div class="section-label mb-5"><i class="fa-solid fa-venus-mars"></i> Gender</div>
+            <ul class="dashboard-list">
+              <p><i class="fa-solid fa-circle"></i> Male</p><br>
+            
+             <div class="section-label mb-5"><i class="fa-solid fa-globe"></i> LANGUAGE</div>
+            <div class="dashboard-list">
+              <p><i class="fa-solid fa-circle"></i> English & French</p>
+            </div>
+          </div>
+        </div> 
+        <!-- Row 3: Nationality spans both columns (CV moved to its own row below) -->
+        <div class="lg:col-span-2 flex justify-center">
+          <div class="dashboard-card p-8 rounded-[28px] bg-[var(--surface)] border border-[var(--border)] shadow-sm max-w-[920px]">
+            <div class="section-label mb-5"><i class="fa-solid fa-flag"></i> Nationality</div>
+            <div class="text-lg font-semibold mb-3">Nationality</div>
+            <p class="text-sm leading-relaxed" style="color: var(--muted)">I am a Nigerian. Proudly representing my culture and global perspective in every project.<br>
+            but i'm based in Ivory Coast (Cote d'ivoire).</p>
+          </div>
+        </div>
+
+  <center><footer class="py-12">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center text-sm" style="color: var(--muted)">
+        Back to <a href="index copy.html" class="footer-link">home</a>
+      </div></center>
+    
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <div class="toast" id="toast"></div>
+  <script src="script copy.js"></script>
+</body>
+</html>
